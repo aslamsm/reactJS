@@ -16,6 +16,13 @@
 
       button {
         margin-top: 20px;
+        margin-right: 10px;
+      }
+      
+      img {
+        max-width: 300px;
+        margin-top: 20px;
+        border: 1px solid #ccc;
       }
     </style>
   </head>
@@ -27,7 +34,10 @@
     <p id="message">Click the button to change this text.</p>
 
     <button onclick="changeMessage()">Click Me</button>
-
-    <script src="script.js"></script>
+    <button onclick="changeImage()">Change Image</button>
+    
+    <br>
+    <img id="ShowImage" src="./image1.jpg" alt="Demo Image">
+   
   </body>
 </html>
