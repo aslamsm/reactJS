@@ -1,0 +1,40 @@
+        /* CSS Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            margin: 0;
+            padding: 20px;
+        }
+h5{ color: blue; }
+
+        .styled-box {
+            width: 300px;
+            padding: 25px;
+            background-color: #ffffff;
+            border: 3px solid red;
+            border-radius: 15px;
+            }
+
+        .styled-box:hover {
+            box-shadow: 5px 5px 1px lightGray;
+        }
+
+        .styled-box h2 {
+            color: Black;
+            margin-top: 0;
+            border-bottom: 2px solid;
+            padding-bottom: 10px;
+        }
+
+        .styled-box p {
+            color: black;
+            line-height: 1.6;
+   	    text-align: justify;
+  	    
+        }
+
+       
+
+       
