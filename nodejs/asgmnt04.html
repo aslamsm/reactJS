@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // This is a simple login script
+      alert(" Welcome to the loop");
+      do {
+        var inp = prompt("do you want to continue? (yes/no):");
+        if (inp.toLowerCase() === "yes") {
+          alert("you chose to continue");
+        } else {
+          if (inp.toLowerCase() === "no") {
+            alert("Exiting the loop.. Goodbye!");
+          } else {
+            alert("Invalid input, please enter 'yes' or 'no'.");
+            inp = "yes"; // Reset inp to "yes" to continue the loop for invalid input.
+          }
+        }
+      } while (inp.toLowerCase() === "yes");
+    </script>
+  </body>
+</html>
