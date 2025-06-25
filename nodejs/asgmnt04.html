@@ -7,20 +7,15 @@
   </head>
   <body>
     <script>
-       alert(" Welcome to the loop");
+      alert(" Welcome to the loop");
       do {
         var inp = prompt("do you want to continue? (yes/no):");
         if (inp.toLowerCase() === "yes") {
           alert("you chose to continue");
-        } else {
-          if (inp.toLowerCase() === "no") {
-            alert("Exiting the loop.. Goodbye!");
-          } else {
-            alert("Invalid input, please enter 'yes' or 'no'.");
-            inp = "yes"; // Reset inp to "yes" to continue the loop for invalid input.
-          }
+        } else if (inp.toLowerCase() === "no") {
+          alert("Exiting the loop... Goodbye!");
         }
-      } while (inp.toLowerCase() === "yes");
+      } while (inp.toLowerCase() !== "no");
     </script>
   </body>
 </html>
