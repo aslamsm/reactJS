@@ -1,11 +1,11 @@
-// function to check Area of rectangle
+// function to check Area of rectangle //
 function calculateArea(length, width) {
   return length * width;
 }
 let area = calculateArea(5, 8);
 console.log(`Area of rectangle is : ${area}\n`);
 
-// function to check even/odd
+// function to check even/odd //
 function checkEvenOdd(no) {
   let msg = no % 2 === 0 ? `No. ${no} is Even` : `No. ${no} is Odd\n`;
   console.log(msg);
@@ -13,7 +13,7 @@ function checkEvenOdd(no) {
 checkEvenOdd(4);
 checkEvenOdd(7);
 
-// function to count Vowels
+// function to count Vowels //
 function countVowels(ovstr) {
   let count = 0;
   let ch = "";
@@ -28,7 +28,8 @@ function countVowels(ovstr) {
 }
 countVowels("reactjs");
 countVowels("banana");
-// function to find Max number
+
+// function to find Max number //
 function finMax(a, b, c) {
   if (a >= b && a >= c) {
     console.log(`Max of ${a}, ${b}, ${c} is : ${a}`);
@@ -40,6 +41,7 @@ function finMax(a, b, c) {
 }
 finMax(12, 5, 20);
 
+// function to print pattern //
 function printPattern(chrs, no) {
   for (i = 1; i <= no; i++) {
     let prn = "";
