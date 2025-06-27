@@ -30,7 +30,7 @@ countVowels("reactjs");
 countVowels("banana");
 
 // function to find Max number //
-function finMax(a, b, c) {
+function findMax(a, b, c) {
   if (a >= b && a >= c) {
     console.log(`Max of ${a}, ${b}, ${c} is : ${a}`);
   } else if (b >= a && b >= c) {
@@ -39,7 +39,7 @@ function finMax(a, b, c) {
     console.log(`Max of ${a}, ${b}, ${c} is : ${c}`);
   }
 }
-finMax(12, 5, 20);
+findMax(12, 5, 20);
 
 // function to print pattern //
 function printPattern(chrs, no) {
