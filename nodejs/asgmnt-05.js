@@ -45,7 +45,7 @@ findMax(12, 5, 20);
 function printPattern(chrs, no) {
   for (i = 1; i <= no; i++) {
     let prn = "";
-    for (j = 0; j < i; j++) {
+    for (j = 1; j <= i; j++) {
       prn = prn + `${chrs}`;
     }
     console.log(`${prn}`);
