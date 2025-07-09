@@ -27,7 +27,9 @@ let books = [
 books.forEach((b) => {
   if (b.author === "J.K. Rowling") {
     console.log(b.title + " is written by " + b.author);
-    // Output: Book Four is written by J.K. Rowling
+    // Output: Book Two is written by J.K. Rowling
+    //         Book Fout is written by J.K. Rowling
+  }
   }
 });
 // print average price of all books
