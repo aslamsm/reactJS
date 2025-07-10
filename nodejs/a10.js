@@ -28,7 +28,7 @@ books.forEach((b) => {
   if (b.author === "J.K. Rowling") {
     console.log(b.title + " is written by " + b.author);
     // Output: Book Two is written by J.K. Rowling
-    //         Book Fout is written by J.K. Rowling
+    //         Book Four is written by J.K. Rowling
   }
   }
 });
