@@ -1,11 +1,17 @@
 import "./App.css";
-import Counter from "./components/Counter";
+import EmployeeTable from "./components/EmployeeTable";
+import EmployeeCard from "./components/EmployeeCard";
 function App() {
   return (
-    <div className="container mt-1">
-      {/* <h1>My First React Application</h1> */}
-      {<Counter />}
-    </div>
+    <>
+      <EmployeeTable />
+      <EmployeeCard
+        id={101}
+        name="Mohamed Suhail"
+        position="Software Engineer"
+        department="Engineering"
+      ></EmployeeCard>
+    </>
   );
 }
 export default App;
