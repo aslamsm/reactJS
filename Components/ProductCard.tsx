@@ -12,7 +12,7 @@ const ProductCard = (props: ProductProps) => {
     <div className="border border-info  m-3 p-3">
       <h3>{props.title}</h3>
       <p>Price: {props.price}</p>
-      <p>Description: {props.description} hours</p>
+      <p>Description: {props.description}</p>
       <p>Product Brands:</p>
       <ol>
         {props.brands.map((brand, index) => (
