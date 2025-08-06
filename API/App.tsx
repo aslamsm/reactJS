@@ -1,9 +1,9 @@
-import UserList from "./components/UserApi/UserList";
+import ProductList from "./components/ProductApi/ProductList";
 
 function App() {
   return (
     <div className="App">
-      <UserList />
+      <ProductList />
     </div>
   );
 }
