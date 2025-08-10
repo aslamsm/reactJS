@@ -61,7 +61,7 @@ function RecipeList1() {
       <h2 className="mb-4 text-center">Recipe List</h2>
       <div className="row">
         {recipes.map((recipe) => (
-          <div className="col-md-4 mb-1" key={recipe.id}>
+          <div className="col-md-3 mb-1" key={recipe.id}>
             <div className="card h-100">
               <img
                 src={recipe.image}
