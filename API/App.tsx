@@ -1,9 +1,9 @@
-import RecipeList from "./components/RecipeApi/RecipeList";
+import RecipeList1 from "./components/RecipeApi/RecipeList1";
 
 function App() {
   return (
     <div className="App">
-      <RecipeList />
+      <RecipeList1 />
     </div>
   );
 }
