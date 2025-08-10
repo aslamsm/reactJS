@@ -38,20 +38,22 @@ function RecipeList1() {
 
   if (loading) {
     return (
-      // Loading spinner and loading text
-      // d-flex(display flex , center the spinner and text)
-      // justify-content-center(centers horizontally)
-      // align-items-center(centers vertically)
-      // gap-2(adds space between spinner and text)
-
-      <div className="d-flex justify-content-center align-items-center">
-        <div className="d-flex align-items-center gap-2">
-          <div className="spinner-border" role="status" />
-          <span>Loading...</span>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <div className="d-flex flex-column align-items-center gap-2">
+          <img
+            src="./src/assets/bar.gif"
+            alt=""
+            style={{ width: "60px", height: "60px" }}
+          />
+          <div>Loading... Please Wait</div>
         </div>
       </div>
     );
   }
+
   if (error) {
     return <h2 className="text-danger">{error}</h2>;
   }
