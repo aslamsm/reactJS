@@ -19,7 +19,7 @@ function RecipeList1() {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("https://dummyjson.com/recipes");
+        const response = await fetch("https://dummyjson.com/recipess");
         if (!response.ok) {
           throw new Error("Network Error: Failed to fetch recipes from API");
           return;
@@ -56,12 +56,12 @@ function RecipeList1() {
   }
 
   if (error) {
-    return <h2 className="text-danger">{error}</h2>;
+    return <h3 className="text-danger text-center mt-5">{error}</h3>;
   }
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4 text-center">Recipe List</h2>
+    <div className="container mt-3">
+      <h2 className="mb-3 text-center">Recipe List</h2>
       <div className="row">
         {recipes.map((recipe) => (
           <div className="col-md-3 mb-1" key={recipe.id}>
@@ -73,7 +73,8 @@ function RecipeList1() {
                   width: "250px",
                   height: "250px",
                   margin: "auto",
-                  objectFit: "cover",
+                  objectFit: "contain",
+                  borderRadius: "20px",
                 }}
                 alt={recipe.name}
               />
