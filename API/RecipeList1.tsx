@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 
 interface Recipe {
   id: number;
@@ -67,14 +68,16 @@ function RecipeList1() {
             <div className="card h-100">
               <img
                 src={recipe.image}
-                className="card-img-top p-3"
+                className="card-img-top p-3 img-fluid zoom-hover"
                 style={{
                   width: "250px",
                   height: "250px",
                   margin: "auto",
+                  objectFit: "cover",
                 }}
                 alt={recipe.name}
               />
+
               <div className="card-body">
                 <h5
                   className="text-primary text-center"
