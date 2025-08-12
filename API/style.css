@@ -1,3 +1,9 @@
+
+html,
+body {
+  overflow: auto;
+}
+
 .zoom-hover {
   transition: transform 0.3s ease;
 }
