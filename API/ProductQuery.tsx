@@ -15,7 +15,7 @@ function ProductQuery() {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [InputMsg, setInputMsg] = useState("");
+  const [inputMsg, setInputMsg] = useState("");
   const [searchClicked, setSearchClicked] = useState(false);
 
   const productsPerPage = 8;
@@ -122,7 +122,7 @@ function ProductQuery() {
     <div className="container mt-3">
       <h2 className="mb-3 text-center">Product List</h2>
 
-      {InputMsg && <h6 className="text-danger fs-6">{InputMsg}</h6>}
+      {inputMsg && <h6 className="text-danger fs-6">{inputMsg}</h6>}
 
       {/* Search Input */}
       <div className="mb-4 d-flex">
