@@ -142,11 +142,6 @@ const ProductsList = () => {
                           height: "40px",
                           objectFit: "cover", // Changed from "fill" to "cover" for better aspect ratio
                         }}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src =
-                            "https://via.placeholder.com/85x40?text=No+Image";
-                        }}
                       />
                     ) : (
                       <div
@@ -202,4 +197,3 @@ const ProductsList = () => {
 };
 
 export default ProductsList;
-
