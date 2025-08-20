@@ -124,7 +124,7 @@ const ProductsList = () => {
                 <th scope="col">Description</th>
                 <th scope="col">Brand</th>
                 <th scope="col">Category</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Edit / Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -202,3 +202,4 @@ const ProductsList = () => {
 };
 
 export default ProductsList;
+
