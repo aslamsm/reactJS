@@ -13,7 +13,7 @@ interface Product {
 }
 
 const ProductsList = () => {
-  const API_URL = "https://689c6b8958a27b18087e17dc.mockapi.io/api/s1/products";
+  const API_URL = "https://689c6b8958a27b18087e17dc.mockapi.io/products";
 
   const [Products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -26,13 +26,15 @@ const ProductsList = () => {
       const response = await fetch(API_URL);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(
+          `Network Error while fetching data from API ! status: ${response.status}`
+        );
       }
 
       const data = await response.json();
       setProducts(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred");
+      setError(String(err));
       console.error("Error fetching products:", err);
     } finally {
       setLoading(false);
@@ -47,33 +49,39 @@ const ProductsList = () => {
     try {
       const deleteUrl = `${API_URL}/${id}`;
       const response = await fetch(deleteUrl, { method: "DELETE" });
-
       if (!response.ok) {
         throw new Error(`Failed to delete product: ${response.status}`);
       }
+      setProducts((existingProducts) => {
+        // Get all current products
+        const allCurrentProducts = existingProducts;
 
-      // Optimistically update the UI instead of refetching all products
-      setProducts((prevProducts) =>
-        prevProducts.filter((product) => product.id !== id)
-      );
+        // Filter out the product we just deleted
+        const remainingProducts = allCurrentProducts.filter((product) => {
+          return product.id !== id; // Keep products that don't match the deleted id
+        });
+
+        // Return the new object list.
+        return remainingProducts;
+      });
     } catch (err) {
       console.error("Error deleting product:", err);
-      // Optionally show an error message to the user
     }
   };
-
   // Loading state
   if (loading) {
     return (
-      <div id="container" className="container-fluid">
-        <h1 className="text-danger">Product List</h1>
-        <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ minHeight: "200px" }}
-        >
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <div className="d-flex flex-column align-items-center gap-2">
+          <img
+            src="./src/assets/bar.gif"
+            alt=""
+            style={{ width: "60px", height: "60px" }}
+          />
+          <div>Loading... Please Wait</div>
         </div>
       </div>
     );
@@ -97,7 +105,7 @@ const ProductsList = () => {
 
   return (
     <div id="container" className="container-fluid">
-      <h1 className="text-danger">Product List</h1>
+      <h4 className="text-center">Product List</h4>
       <Link to={`/add-Product`} className="btn btn-primary my-3">
         <i className="bi-plus-circle me-2"></i>
         Add Product
@@ -116,15 +124,27 @@ const ProductsList = () => {
           <table className="table table-striped table-hover table-sm">
             <thead>
               <tr className="table-dark">
-                <th scope="col">Id</th>
-                <th scope="col" style={{ minWidth: "100px" }}>
+                <th scope="col" style={{ width: "10%" }}>
+                  Id
+                </th>
+                <th scope="col" style={{ width: "10%" }}>
                   Image
                 </th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Brand</th>
-                <th scope="col">Category</th>
-                <th scope="col">Edit / Delete</th>
+                <th scope="col" style={{ width: "20%" }}>
+                  Title
+                </th>
+                <th scope="col" style={{ width: "20%" }}>
+                  Description
+                </th>
+                <th scope="col" style={{ width: "15%" }}>
+                  Brand
+                </th>
+                <th scope="col" style={{ width: "15%" }}>
+                  Category
+                </th>
+                <th scope="col" style={{ width: "15%" }}>
+                  Edit / Delete
+                </th>
               </tr>
             </thead>
             <tbody>
