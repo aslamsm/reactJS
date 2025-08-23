@@ -10,6 +10,9 @@ import UserList from "./components/UserApi/UserList";
 import ListProducts from "./components/CrudProducts/ListProducts";
 import ProductAdd from "./components/CrudProducts/ProductAdd";
 import ProductEdit from "./components/CrudProducts/ProductEdit";
+import ListCustomers from "./components/CrudProducts/ListCustomers";
+import CustomerAdd from "./components/CrudProducts/CustomerAdd";
+import CustomerEdit from "./components/CrudProducts/CustomerEdit";
 
 function App() {
   return (
@@ -24,10 +27,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/courses" element={<CourseList />} />
             <Route path="/users" element={<UserList />} />
-            <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<ListProducts />} />
             <Route path="/add-Product" element={<ProductAdd />} />
             <Route path="/products/:id/edit" element={<ProductEdit />} />
+            <Route path="/customers" element={<ListCustomers />} />
+            <Route path="/add-Customer" element={<CustomerAdd />} />
+            <Route path="/customers/:id/edit" element={<CustomerEdit />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
