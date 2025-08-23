@@ -1,7 +1,7 @@
 function Header() {
   return (
-    <header className="bg-dark text-white text-center py-1">
-      <h2>React Layout App</h2>
+    <header className="bg-dark text-warning text-center py-1 shadow-lg">
+      {/* <h6>React Layout App</h6> */}
     </header>
   );
 }
