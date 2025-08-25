@@ -7,13 +7,13 @@ type CardProps = {
 };
 
 function Card({ type, imageSrc, children }: CardProps) {
-  // Basic card styles
+  // card styles
   const cardStyle = {
     border: "2px solid #ccc",
     padding: "20px",
     borderRadius: "12px",
     margin: "16px auto",
-    textAlign: "center" as const,
+    textAlign: "center",
     width: "280px",
     boxShadow: "0 5px 10px rgba(18, 17, 17, 0.1)",
     fontFamily: "Arial, sans-serif",
@@ -22,7 +22,7 @@ function Card({ type, imageSrc, children }: CardProps) {
 
   return (
     <div style={cardStyle}>
-      {/* Show image if imageSrc is provided */}
+      {/* Show image */}
       {imageSrc && (
         <img
           src={imageSrc}
@@ -44,3 +44,4 @@ function Card({ type, imageSrc, children }: CardProps) {
 }
 
 export default Card;
+
