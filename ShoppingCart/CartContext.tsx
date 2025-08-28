@@ -14,14 +14,13 @@ type CartItem = {
 };
 
 interface CartContextType {
-  cart: CartItem[]; // The current items in the cart
-  addToCart: (product: Product) => void; // Add products to the cart
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  clearCart: () => void;
 }
 
-// Create a context.
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-// use the cart context
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -30,32 +29,32 @@ export const useCart = () => {
   return context;
 };
 
-// main Cartprovider that will wrap around our app or components
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>([]); // Initial cart is empty
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
       const found = prevCart.find((item) => item.id === product.id);
-
       if (found) {
-        // If the product already exists, just increase its quantity
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
-        // If it's a new product, add it to the cart with quantity = 1
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
