@@ -3,13 +3,16 @@ import React, { createContext, useContext, useState } from "react";
 type Product = {
   id: number;
   item: string;
+  desc: string;
   price: number;
+  image: string;
 };
 
 type CartItem = {
   id: number;
   item: string;
   price: number;
+  image: string;
   quantity: number;
 };
 
@@ -17,6 +20,9 @@ interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
   clearCart: () => void;
+  getTotalQuantity: () => number;
+  plusQuantity: (id: number) => void;
+  minusQuantity: (id: number) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -53,8 +59,39 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     setCart([]);
   };
 
+  const getTotalQuantity = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const plusQuantity = (id: number) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const minusQuantity = (id: number) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        clearCart,
+        getTotalQuantity,
+        plusQuantity,
+        minusQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
