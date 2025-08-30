@@ -26,7 +26,7 @@ export const ProductItem: React.FC<Props> = (props) => {
       />
       <div className="card-body d-flex flex-column">
         <h5 className="card-title text-center">{props.item}</h5>
-        <p className="card-text small flex-grow-1 text-justify">{props.desc}</p>
+        <p className="card-text small flex-grow-1 text-justify fst-italic">{props.desc}</p>
         <h6 className="fw-bold text-muted">Price: ${props.price.toFixed(0)}</h6>
         <button
           className="btn btn-primary btn-sm"
@@ -46,3 +46,4 @@ export const ProductItem: React.FC<Props> = (props) => {
     </div>
   );
 };
+
