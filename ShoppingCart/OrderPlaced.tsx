@@ -47,6 +47,11 @@ const OrderPlaced = () => {
           0
         );
 
+        const totalAmount = currentCart.reduce(
+          (total, item) => total + item.quantity * item.price,
+          0
+        );
+
         if (totalQuantity === 0) {
           setError("Your cart has no items with quantity greater than 0.");
           orderProcRef.current = false;
@@ -56,6 +61,7 @@ const OrderPlaced = () => {
         const orderData = {
           address: currentAddress,
           totalqty: totalQuantity,
+          totalamt: totalAmount,
           products: currentCart
             .filter((item) => item.quantity > 0)
             .map((item) => ({
