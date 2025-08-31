@@ -21,28 +21,27 @@ export const Cart: React.FC = () => {
 
       <div className="table-responsive">
         <table className="table table-bordered table-striped table-sm">
-          <thead className="table-success">
+          <thead className="table">
             <tr>
-              <th className="text-center">Image</th>
-              <th className="text-center">Item</th>
-              <th className="text-center">Quantity</th>
-              <th className="text-end">Price</th>
+              <th className="ps-3 bg-info text-light">Item</th>
+              <th className="text-center bg-info text-light">Image</th>
+              <th className="text-center bg-info text-light">Price</th>
+              <th className="text-center bg-info text-light">Quantity</th>
+              <th className="text-end bg-info text-light">Price</th>
             </tr>
           </thead>
           <tbody>
             {cart.map((item) => (
-              <tr
-                key={item.id}
-                style={{ verticalAlign: "middle", height: "25%" }}
-              >
+              <tr key={item.id} style={{ verticalAlign: "middle" }}>
+                <td className="ps-3">{item.item}</td>
                 <td className="text-center">
                   {item.image ? (
                     <img
                       src={item.image}
                       style={{
-                        width: "50px",
+                        width: "70px",
                         height: "50px",
-                        objectFit: "contain",
+                        objectFit: "fill",
                       }}
                     />
                   ) : (
@@ -59,13 +58,13 @@ export const Cart: React.FC = () => {
                   )}
                 </td>
 
-                <td className="text-center">{item.item}</td>
-
+                <td className="text-center">{item.price.toFixed(2)}</td>
                 <td className="text-center">
                   <div className="btn-group" role="group">
                     <button
                       className="btn btn-outline-secondary btn-sm"
                       onClick={() => minusQuantity(item.id)}
+                      style={{ backgroundColor: "lightyellow" }}
                       disabled={item.quantity === 1}
                     >
                       −
@@ -75,6 +74,7 @@ export const Cart: React.FC = () => {
                     </span>
                     <button
                       className="btn btn-outline-secondary btn-sm"
+                      style={{ backgroundColor: "lightyellow" }}
                       onClick={() => plusQuantity(item.id)}
                     >
                       +
@@ -93,23 +93,24 @@ export const Cart: React.FC = () => {
       <h5 className="text-end text-success">Total: ${total.toFixed(2)}</h5>
       <div className="d-flex  gap-2">
         <button
-          className="btn btn-secondary btn-sm"
+          className="btn btn-success btn-md "
+          onClick={() => navigate("/products")}
+        >
+          Continue Shopping
+        </button>
+
+        <button
+          className="btn btn-warning  btn-md"
           onClick={() => navigate("/address")}
         >
           Proceed to Address
         </button>
+
         <button
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-md fs-5 ms-auto"
           onClick={() => navigate("/order")}
         >
           Place the Order
-        </button>
-
-        <button
-          className="btn btn-success btn-sm ms-auto"
-          onClick={() => navigate("/products")}
-        >
-          Continue Shopping
         </button>
       </div>
     </div>

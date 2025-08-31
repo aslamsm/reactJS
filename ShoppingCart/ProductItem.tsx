@@ -13,20 +13,49 @@ export const ProductItem: React.FC<Props> = (props) => {
   const { addToCart } = useCart();
 
   return (
-    <div className="card h-100 shadow-sm mt-2">
-      <img
-        src={props.image}
-        alt={props.item}
-        className="card-img-top mx-auto"
+    <div
+      className="card vh-75 shadow-sm mt-2"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        className="image-container position-relative overflow-hidden"
         style={{
+          height: "200px",
+          width: "200px",
+          display: "flex",
+          padding: "3px",
           objectFit: "contain",
-          height: "100px",
-          width: "100px",
         }}
-      />
+      >
+        <img
+          src={props.image}
+          alt={props.item}
+          className="product-image"
+          style={{
+            maxHeight: "200px",
+            maxWidth: "200px",
+            objectFit: "contain",
+            transition: "transform 0.3s ease-in-out",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+        />
+      </div>
+
       <div className="card-body d-flex flex-column">
-        <h5 className="card-title text-center">{props.item}</h5>
-        <p className="card-text small flex-grow-1 text-justify fst-italic">{props.desc}</p>
+        <h5 className="card-title text-center ">{props.item}</h5>
+        <p className="card-text small flex-grow-1 text-justify fst-italic">
+          {props.desc}
+        </p>
         <h6 className="fw-bold text-muted">Price: ${props.price.toFixed(0)}</h6>
         <button
           className="btn btn-primary btn-sm"
@@ -46,4 +75,3 @@ export const ProductItem: React.FC<Props> = (props) => {
     </div>
   );
 };
-
