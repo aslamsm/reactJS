@@ -47,7 +47,7 @@ const OrderPlaced = () => {
           (total, item) => total + item.quantity,
           0
         );
-        console.log(totalQuantity);
+        // console.log(totalQuantity);
 
         if (totalQuantity == 0) {
           console.log(`Total Qty : ${totalQuantity}`);
@@ -61,7 +61,10 @@ const OrderPlaced = () => {
           0
         );
 
+        const ordDate = new Date();
+
         const orderData = {
+          orderdate: ordDate,
           address: currentAddress,
           totalqty: totalQuantity,
           totalamt: totalAmount,
@@ -144,12 +147,7 @@ const OrderPlaced = () => {
 
   // Only show success message if order was actually placed
   if (hasPlacedOrder) {
-    return (
-      <div className="alert alert-info mt-4">Processing your request...</div>
-    );
-  }
-
-  if (hasPlacedOrder) {
+    <div className="alert alert-info mt-4">Processing your request...</div>;
     return (
       <div className="container mt-4">
         <h2 className="text-success">Order Placed!</h2>
