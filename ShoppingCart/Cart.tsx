@@ -10,8 +10,18 @@ export const Cart: React.FC = () => {
 
   if (cart.length === 0)
     return (
-      <div className="container">
-        <p className="text-center text-danger">*** Cart is Empty ***</p>
+      <div className="container mt-5 d-flex justify-content-center">
+        <div className="shadow-md p-2 rounded  text-center">
+          <img
+            src="./src/assets/shopcart.jpg"
+            alt="Empty Cart"
+            style={{ width: "50px", marginBottom: "5px" }}
+          />
+          <h5 className="mb-2 text-danger">Your cart is empty!</h5>
+          <p className="mb-0 text-secondary">
+            Looks like you haven’t added anything yet.
+          </p>
+        </div>
       </div>
     );
 

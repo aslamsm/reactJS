@@ -62,9 +62,15 @@ const OrderPlaced = () => {
         );
 
         const ordDate = new Date();
+        const day = String(ordDate.getDate()).padStart(2, "0");
+        const month = String(ordDate.getMonth() + 1).padStart(2, "0");
+        const year = ordDate.getFullYear();
+
+        const formattedDate = `${day}/${month}/${year}`;
 
         const orderData = {
-          orderdate: ordDate,
+          id: "",
+          orderdate: formattedDate,
           address: currentAddress,
           totalqty: totalQuantity,
           totalamt: totalAmount,
@@ -76,7 +82,6 @@ const OrderPlaced = () => {
               quantity: item.quantity,
               price: item.price,
             })),
-          orderDate: new Date().toISOString(),
         };
 
         // Save the order info. in MockAPI.
