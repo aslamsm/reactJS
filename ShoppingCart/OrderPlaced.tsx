@@ -33,6 +33,7 @@ const OrderPlaced = () => {
 
     if (!currentAddress) {
       orderProcRef.current = false;
+      setError("No delivery address found. Please go back and add an address.");
       return;
     }
 
@@ -42,21 +43,23 @@ const OrderPlaced = () => {
         setError(null);
 
         // Calculate total quantity from current cart
-        const totalQuantity = currentCart.reduce(
+        const totalQuantity: number = currentCart.reduce(
           (total, item) => total + item.quantity,
           0
         );
+        console.log(totalQuantity);
+
+        if (totalQuantity == 0) {
+          console.log(`Total Qty : ${totalQuantity}`);
+          setError("Your cart has no items with quantity greater than 0.");
+          orderProcRef.current = false;
+          return;
+        }
 
         const totalAmount = currentCart.reduce(
           (total, item) => total + item.quantity * item.price,
           0
         );
-
-        if (totalQuantity === 0) {
-          setError("Your cart has no items with quantity greater than 0.");
-          orderProcRef.current = false;
-          return;
-        }
 
         const orderData = {
           address: currentAddress,
@@ -126,17 +129,36 @@ const OrderPlaced = () => {
   }
 
   if (error) {
-    return <div className="alert alert-danger mt-4">Error: {error}</div>;
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger">{error}</div>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/products")}
+        >
+          Continue Shopping
+        </button>
+      </div>
+    );
   }
 
-  return (
-    <div className="container mt-4">
-      <h2 className="text-success">Order Placed!</h2>
-      <p>Your order will be delivered to:</p>
-      <div className="alert alert-info">{address}</div>
-      <p>Thank you for shopping with us!</p>
-    </div>
-  );
+  // Only show success message if order was actually placed
+  if (hasPlacedOrder) {
+    return (
+      <div className="alert alert-info mt-4">Processing your request...</div>
+    );
+  }
+
+  if (hasPlacedOrder) {
+    return (
+      <div className="container mt-4">
+        <h2 className="text-success">Order Placed!</h2>
+        <p>Your order will be delivered to:</p>
+        <div className="alert alert-info">{address}</div>
+        <p>Thank you for shopping with us!</p>
+      </div>
+    );
+  }
 };
 
 export default OrderPlaced;
