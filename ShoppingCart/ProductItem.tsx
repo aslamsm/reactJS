@@ -9,68 +9,121 @@ type Props = {
   image: string;
 };
 
-export const ProductItem: React.FC<Props> = (props) => {
+export const ProductItem: React.FC<Props> = ({
+  id,
+  item,
+  desc,
+  price,
+  image,
+}) => {
   const { addToCart } = useCart();
 
-  return (
-    <div
-      className="card vh-75 shadow-sm mt-2"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        className="image-container position-relative overflow-hidden"
-        style={{
-          height: "200px",
-          width: "200px",
-          display: "flex",
-          padding: "3px",
-          objectFit: "contain",
-        }}
-      >
-        <img
-          src={props.image}
-          alt={props.item}
-          className="product-image"
-          style={{
-            maxHeight: "200px",
-            maxWidth: "200px",
-            objectFit: "contain",
-            transition: "transform 0.3s ease-in-out",
-            cursor: "pointer",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        />
-      </div>
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      item,
+      desc,
+      price,
+      image,
+    });
+  };
 
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title text-center ">{props.item}</h5>
-        <p className="card-text small flex-grow-1 text-justify fst-italic">
-          {props.desc}
-        </p>
-        <h6 className="fw-bold text-muted">Price: ${props.price.toFixed(0)}</h6>
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={() =>
-            addToCart({
-              id: props.id,
-              item: props.item,
-              desc: props.desc,
-              price: props.price,
-              image: props.image,
-            })
-          }
+  return (
+    <div className="col-12 col-sm-12 mb-1">
+      <div
+        className="card h-100 shadow-sm border-0 position-relative overflow-hidden"
+        style={{ minWidth: "200px" }}
+      >
+        {/* Image Container with fixed aspect ratio */}
+        <div
+          className="position-relative d-flex align-items-center justify-content-center"
+          style={{
+            height: "150px",
+            overflow: "hidden",
+          }}
         >
-          Add to Cart
-        </button>
+          <img
+            src={image}
+            alt={item}
+            className="img-fluid"
+            style={{
+              width: "140px",
+              height: "140px",
+              objectFit: "contain",
+              transition: "transform 0.3s ease-out-in",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://via.placeholder.com/220x220/f8f9fa/6c757d?text=No+Image";
+            }}
+          />
+        </div>
+
+        {/* Product Details */}
+        <div
+          className="card-body d-flex flex-column p-1"
+          style={{ minHeight: "150px" }}
+        >
+          <h6
+            className="card-title fw-semibold mb-1 text-truncate"
+            title={item}
+            style={{ fontSize: "0.9rem" }}
+          >
+            {item}
+          </h6>
+          <p
+            className="card-text text-muted mb-0 ms-0 fst-italic"
+            title={desc}
+            style={{
+              overflow: "hidden",
+              WebkitLineClamp: 3, // this is to limit no of lines in <p> tag.
+              WebkitBoxOrient: "vertical",
+              fontSize: "0.80rem",
+              lineHeight: "1.5",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {desc}
+          </p>
+
+          <div className="mt-0">
+            <div className="d-flex mb-0">
+              <span className="fw-semibold text-primary ms-auto">
+                ${price.toFixed(2)}
+              </span>
+            </div>
+
+            <button
+              className="btn btn-primary w-100 py-1 fw-semibold"
+              onClick={handleAddToCart}
+              aria-label={`Add ${item} to cart`}
+              style={{
+                borderRadius: "6px",
+                transition: "all 0.3s ease-in-out",
+                fontSize: "0.8rem",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 12px rgba(0,123,255,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <i className="fas fa-shopping-cart me-2"></i>
+              Add to Cart
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

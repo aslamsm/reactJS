@@ -10,10 +10,10 @@ export const Cart: React.FC = () => {
 
   if (cart.length === 0)
     return (
-      <div className="container mt-5 d-flex justify-content-center">
-        <div className="shadow-md p-2 rounded  text-center">
+      <div className="container mt-5 d-flex text-border justify-content-center">
+        <div className="empty-cart-alert shadow-sm border border-danger p-4 rounded text-center bg-light">
           <img
-            src="./src/assets/shopcart.jpg"
+            src="./src/assets/emptycart.png"
             alt="Empty Cart"
             style={{ width: "50px", marginBottom: "5px" }}
           />
