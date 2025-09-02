@@ -37,7 +37,7 @@ export const Cart: React.FC = () => {
               <th className="text-center bg-info text-light">Image</th>
               <th className="text-center bg-info text-light">Price</th>
               <th className="text-center bg-info text-light">Quantity</th>
-              <th className="text-end bg-info text-light">Price</th>
+              <th className="text-end bg-info text-light">Ext. Amount</th>
             </tr>
           </thead>
           <tbody>
@@ -103,21 +103,21 @@ export const Cart: React.FC = () => {
       <h5 className="text-end text-success">Total: ${total.toFixed(2)}</h5>
       <div className="d-flex  gap-2">
         <button
-          className="btn btn-success btn-md "
+          className="btn btn-success btn-sm "
           onClick={() => navigate("/products")}
         >
           Continue Shopping
         </button>
 
         <button
-          className="btn btn-warning  btn-md"
+          className="btn btn-warning  btn-sm"
           onClick={() => navigate("/address")}
         >
           Proceed to Address
         </button>
 
         <button
-          className="btn btn-primary btn-md fs-5 ms-auto"
+          className="btn btn-primary btn-md fs-7 ms-auto"
           onClick={() => navigate("/order")}
         >
           Place the Order

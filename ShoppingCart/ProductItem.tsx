@@ -29,16 +29,17 @@ export const ProductItem: React.FC<Props> = ({
   };
 
   return (
-    <div className="col-12 col-sm-12 mb-1">
+    <div className="col-12 col-sm-12 mb-1 mt-2">
       <div
-        className="card h-100 shadow-sm border-0 position-relative overflow-hidden"
-        style={{ minWidth: "200px" }}
+        className="card h-100 shadow-sm align-items-center justify-content-center border-1 position-relative overflow-hidden"
+        style={{ maxWidth: "375px" }}
       >
         {/* Image Container with fixed aspect ratio */}
         <div
-          className="position-relative d-flex align-items-center justify-content-center"
+          className="d-flex "
           style={{
-            height: "150px",
+            height: "100%",
+            width: "125px",
             overflow: "hidden",
           }}
         >
@@ -47,8 +48,8 @@ export const ProductItem: React.FC<Props> = ({
             alt={item}
             className="img-fluid"
             style={{
-              width: "140px",
-              height: "140px",
+              width: "150px",
+              height: "125px",
               objectFit: "contain",
               transition: "transform 0.3s ease-out-in",
             }}
@@ -71,9 +72,9 @@ export const ProductItem: React.FC<Props> = ({
           style={{ minHeight: "150px" }}
         >
           <h6
-            className="card-title fw-semibold mb-1 text-truncate"
+            className="card-title fw-semibold mb-2 text-center"
             title={item}
-            style={{ fontSize: "0.9rem" }}
+            style={{ fontSize: "1.1rem" }}
           >
             {item}
           </h6>
@@ -111,8 +112,7 @@ export const ProductItem: React.FC<Props> = ({
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(0,123,255,0.3)";
+                // e.currentTarget.style.backgroundColor = "red";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
